@@ -1,14 +1,14 @@
-# Q Applet Game Deals
+# Q Applet Twitch Streams
 
-See alerts for recent game deals, on a Das Keyboard Q series.
+Receive notifications on a Das Keyboard Q whenver your favorite streamers are active..
 
-[GitHub repository](https://github.com/daskeyboard/daskeyboard-applet--game-deals)
+[GitHub repository](https://github.com/daskeyboard/daskeyboard-applet--twitch-streams)
 
 ## Example
 
-Displays a signal when a new deal goes live for a wanted game.
+Displays a signal when any of your favorite streamers is ontline.
 
-![Game Deals on a Das Keybaord Q](https://raw.githubusercontent.com/daskeyboard/daskeyboard-applet--weather-forecast/master/assets/q-applet-game-deals-image.png "Q Game Deals")
+![Twitch Streams on a Das Keybaord Q](https://raw.githubusercontent.com/daskeyboard/daskeyboard-applet--weather-forecast/master/assets/q-applet-twitch-streams-image.png "Q Twitch Streams")
 
 ## Changelog
 
@@ -33,11 +33,11 @@ Licensed under the GNU General Public License Version 2.0 (or later);
 you may not use this work except in compliance with the License.
 You may obtain a copy of the License in the LICENSE file, or at:
 
-   http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt
+   https://spdx.org/licenses/MIT.html
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-# daskeyboard-applet--game-deals
+# daskeyboard-applet--twitch-streams

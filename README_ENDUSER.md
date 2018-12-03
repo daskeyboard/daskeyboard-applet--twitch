@@ -1,7 +1,7 @@
-# Game Deals
+# Q Applet Twitch Streams
 
-Displays a signal whenever a new deal goes live on a wanted game.
+Receive notifications on a Das Keyboard Q whenver your favorite streamers are active..
 
-![Game Deals on a Das Keybaord Q](https://raw.githubusercontent.com/daskeyboard/daskeyboard-applet--weather-forecast/master/assets/q-applet-game-deals-image.png "Q Game Deals")
+![Twitch Streams on a Das Keybaord Q](https://raw.githubusercontent.com/daskeyboard/daskeyboard-applet--weather-forecast/master/assets/q-applet-twitch-streams-image.png "Q Twitch Streams")
 
-This applet follows the "Video Game Deals" forum on [Cheapassgamer.com](https://www.cheapassgamer.com/forum/10-video-game-deals/).
+This app displays a signal when any of your favorite streamers is ontline.
