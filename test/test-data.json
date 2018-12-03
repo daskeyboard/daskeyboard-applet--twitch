@@ -1,0 +1,32 @@
+{
+  "data": [{
+    "id": "31516513936",
+    "user_id": "35682895",
+    "user_name": "Patterrz",
+    "game_id": "506237",
+    "community_ids": ["2caef3bd-b3db-4eed-a748-f3ee124b33aa", "aabb1a4b-4681-4115-9806-391fca12b2a4", "fd0eab99-832a-4d7e-8cc0-04d73deb2e54"],
+    "type": "live",
+    "title": "Pokemon Lets Go FINALLY FIND SHINY VULPIX PLEASE (w/Shiny Charm 15/150)",
+    "viewer_count": 7553,
+    "started_at": "2018-12-03T15:00:29Z",
+    "language": "en",
+    "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_patterrz-{width}x{height}.jpg",
+    "tag_ids": ["6ea6bca4-4712-4ab9-a906-e3336a9d8039"]
+  }, {
+    "id": "31504348160",
+    "user_id": "149747285",
+    "user_name": "TwitchPresents",
+    "game_id": "499973",
+    "community_ids": [],
+    "type": "live",
+    "title": "Pokémon is back! Starting at 10AM PT.",
+    "viewer_count": 5052,
+    "started_at": "2018-12-02T18:00:05Z",
+    "language": "en",
+    "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_twitchpresents-{width}x{height}.jpg",
+    "tag_ids": ["1706e401-a023-49fc-9b10-7bf73f59c940", "e3a6b378-232b-4ec2-9a82-86b72851e09a", "6606e54c-f92d-40f6-8257-74977889ccdd", "e90b5f6e-4c6e-4003-885b-4d0d5adeb580", "8a01ea18-df97-4046-9cff-a9a822bb96e5", "6ea6bca4-4712-4ab9-a906-e3336a9d8039"]
+  }],
+  "pagination": {
+    "cursor": "eyJiIjpudWxsLCJhIjp7Ik9mZnNldCI6Mn19"
+  }
+}
