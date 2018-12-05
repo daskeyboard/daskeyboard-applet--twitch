@@ -1,6 +1,6 @@
 # Twitch
 
-Receive notifications on a Das Keyboard Q whenver your favorite streamers are active.
+Receive notifications on a Das Keyboard Q whenever your favorite streamers are active.
 
 ![Twitch on a Das Keybaord Q](assets/image.png "Q Twitch")
 

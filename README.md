@@ -1,6 +1,6 @@
 # Q Applet: Twitch
 
-Receive notifications on a Das Keyboard Q whenver your favorite streamers are active.
+Receive notifications on a Das Keyboard Q whenever your favorite streamers are active.
 
 [GitHub repository](https://github.com/daskeyboard/daskeyboard-applet--twitch)
 
