@@ -1,14 +1,14 @@
 # Q Applet: Twitch
 
-Receive notifications on a Das Keyboard Q whenver your favorite streamers are active..
+Receive notifications on a Das Keyboard Q whenver your favorite streamers are active.
 
-[GitHub repository](https://github.com/daskeyboard/daskeyboard-applet--twitch-streams)
+[GitHub repository](https://github.com/daskeyboard/daskeyboard-applet--twitch)
 
 ## Example
 
-Displays a signal when any of your favorite streamers is ontline.
+Displays a signal when any of your favorite streamers is on line.
 
-![Twitch Streams on a Das Keybaord Q](https://raw.githubusercontent.com/daskeyboard/daskeyboard-applet--weather-forecast/master/assets/q-applet-twitch-streams-image.png "Q Twitch Streams")
+![Twitch on a Das Keybaord Q](assets/image.png "Q Twitch")
 
 ## Changelog
 
@@ -16,10 +16,14 @@ Displays a signal when any of your favorite streamers is ontline.
 
 ## Installation
 
-Requires a Das Keyboard Q Series: www.daskeyboard.com/5q
+Requires a Das Keyboard Q Series: www.daskeyboard.com
 
 Installation, configuration and uninstallation of applets is done within
-the Q Desktop application (https://www.daskeyboard.io/get-started/software/)
+the Q Desktop application (https://www.daskeyboard.com/q)
+
+## Running tests
+
+    yarn test
 
 ## Contributions
 
