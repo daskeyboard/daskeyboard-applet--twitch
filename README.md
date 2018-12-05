@@ -1,4 +1,4 @@
-# Q Applet Twitch Streams
+# Q Applet: Twitch
 
 Receive notifications on a Das Keyboard Q whenver your favorite streamers are active..
 
