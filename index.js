@@ -31,6 +31,20 @@ class TwitchStreams extends q.DesktopApp {
     this.notified = {};
   }
 
+  async applyConfig() {
+    const userLogins = this.config.userLogins;
+
+    if (userLogins) {
+      logger.info("My user logins are: " + JSON.stringify(userLogins));
+
+      for (let login of userLogins) {
+        if (null == login || login.trim() == '') {
+          throw new Error("User logins must not be empty.")
+        }
+      }
+    }
+  }
+
   /**
    * Generate a signal from deal RSS
    * @param {Array<RssItem>} data
@@ -53,6 +67,7 @@ class TwitchStreams extends q.DesktopApp {
 
     return null;
   }
+
 
   async run() {
     logger.info("Running.");

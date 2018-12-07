@@ -1,15 +1,15 @@
 const assert = require('assert');
 const t = require('../index');
 
-// describe('retrieveData', function () {
-//   it('retrieves data', async function () {
-//     const userLogins = ['twitchpresents', 'patterrz'];
-//     return t.retrieveData(userLogins).then(data => {
-//       assert.ok(data);
-//       console.log(JSON.stringify(data));
-//     })
-//   })
-// });
+describe('retrieveData', function () {
+  it('retrieves data', async function () {
+    const userLogins = ['twitchpresents', 'patterrz'];
+    return t.retrieveData(userLogins).then(data => {
+      assert.ok(data);
+      console.log(JSON.stringify(data));
+    })
+  })
+});
 
 describe('TwitchStreams', function () {
   it('#generateSignal(data)', function () {
@@ -36,7 +36,19 @@ describe('TwitchStreams', function () {
 
     signal = app.generateSignal(data);
     assert.ok(!signal);
+  });
 
+  describe('#applyConfig()', function () {
+    it('rejects empty logins', function () {
+      const app = buildApp({
+        userLogins: ['']
+      });
+      app.applyConfig().then(() => {
+        assert.fail("Should have rejected.");
+      }).catch(error => {
+        assert.ok(error);
+      })
+    })  
   });
 
   it('#run()', function () {
@@ -55,7 +67,7 @@ describe('TwitchStreams', function () {
         console.log('I\'m good');
       });
     })
-  })
+  });
 });
 
 function buildApp(config) {
