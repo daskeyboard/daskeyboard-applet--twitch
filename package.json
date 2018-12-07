@@ -22,7 +22,7 @@
   "readMeUrl": "README.md",
   "readMeEndUserUrl": "README_ENDUSER.md",
   "engines": {
-    "das-keyboard-q": "3.1.x"
+    "das-keyboard-q": "3.1.0"
   },
   "qActionUrl": "",
   "main": "index.js",
@@ -30,7 +30,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "daskeyboard-applet": "^2.8.8"
+    "daskeyboard-applet": "^2.10.4"
   },
   "qConfig": {
     "geometry": {
