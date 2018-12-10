@@ -60,9 +60,9 @@ class TwitchStreams extends q.DesktopApp {
             ]
           ],
           name: `${stream.user_name} is live!`,
-          message: `${stream.title}\nhttps://www.twitch.tv/${stream.user_name}`,
+          message: `${stream.title}`,
           link: {
-            url: '${stream.title}\nhttps://www.twitch.tv/${stream.user_name}',
+            url: 'https://www.twitch.tv/'+`${stream.user_name}`,
             label: 'Show in Twitch',
           },
         });
