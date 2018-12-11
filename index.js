@@ -29,6 +29,8 @@ class TwitchStreams extends q.DesktopApp {
     super();
     // store a record of previously notified deals
     this.notified = {};
+    // run every 1 min
+    this.pollingInterval = 1 * 60 * 1000;
   }
 
   async applyConfig() {
@@ -62,7 +64,7 @@ class TwitchStreams extends q.DesktopApp {
           name: `${stream.user_name} is live!`,
           message: `${stream.title}`,
           link: {
-            url: 'https://www.twitch.tv/'+`${stream.user_name}`,
+            url: 'https://www.twitch.tv/' + `${stream.user_name}`,
             label: 'Show in Twitch',
           },
         });
