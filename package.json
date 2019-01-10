@@ -1,8 +1,8 @@
 {
   "name": "daskeyboard-applet--twitch",
   "displayName": "Twitch",
-  "version": "1.0.0",
-  "description": "Receive notifications on a Das Keyboard Q whenever your favorite streamers are active.",
+  "version": "1.0.1",
+  "description": "Live stream notifications.",
   "longDescription": "Receive notifications on a Das Keyboard Q whenever your favorite streamers are active.",
   "officialProductName": "Twitch",
   "appUrl": "",
