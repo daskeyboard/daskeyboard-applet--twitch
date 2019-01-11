@@ -29,8 +29,8 @@ class TwitchStreams extends q.DesktopApp {
     super();
     // store a record of previously notified deals
     this.notified = {};
-    // run every 1 min
-    this.pollingInterval = 1 * 60 * 1000;
+    // run every 5 min
+    this.pollingInterval = 5 * 60 * 1000;
   }
 
   async applyConfig() {
@@ -58,7 +58,7 @@ class TwitchStreams extends q.DesktopApp {
         return new q.Signal({
           points: [
             [
-              new q.Point('#00FF00')
+              new q.Point('#0000FF',q.Effects.BLINK)
             ]
           ],
           name: `${stream.user_name} is live!`,
