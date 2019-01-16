@@ -4,10 +4,6 @@ Receives notifications on a Das Keyboard Q whenever your favorite streamers are 
 
 [GitHub repository](https://github.com/daskeyboard/daskeyboard-applet--twitch)
 
-## Example
-
-Displays a signal when any of your favorite streamers is on line.
-
 ![Twitch on a Das Keybaord Q](assets/image.png "Q Twitch")
 
 ## Changelog
