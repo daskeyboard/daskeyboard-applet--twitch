@@ -18,8 +18,8 @@ async function retrieveData(userLogins) {
     },
     json: true
   }).catch(error => {
-    logger.error(`Got error: ${error}`);
-    throw error;
+    logger.error(`Error when trying to retrieveData: ${error}`);
+    throw new Error(`Error when trying to retrieveData: ${error}`);
   });
 }
 
@@ -76,7 +76,7 @@ class TwitchStreams extends q.DesktopApp {
 
 
   async run() {
-    logger.info("Running.");
+    logger.info("Twitch running.");
     const userLogins = this.config.userLogins;
 
     if (userLogins) {
@@ -85,7 +85,15 @@ class TwitchStreams extends q.DesktopApp {
       return retrieveData(userLogins)
         .then(body => {
           return this.generateSignal(body);
-        })
+        }).catch(error => {
+          logger.error(`Error while getting Twitch data: ${error}`);
+          if(`${error.message}`.includes("getaddrinfo")){
+            return q.Signal.error(
+              'The Twitch service returned an error. <b>Please check your internet connection</b>.'
+            );
+          }
+          return q.Signal.error([`The Twitch service returned an error. Detail: ${error}`]);
+        });
     } else {
       logger.warn("No userLogins configured.");
       return null;

@@ -1,7 +1,7 @@
 {
   "name": "daskeyboard-applet--twitch",
   "displayName": "Twitch",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Displays live stream notifications.",
   "longDescription": "Receive notifications on a Das Keyboard Q whenever your favorite streamers are active.",
   "officialProductName": "Twitch",
@@ -30,7 +30,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "daskeyboard-applet": "2.10.6"
+    "daskeyboard-applet": "^2.11.1"
   },
   "qConfig": {
     "geometry": {
