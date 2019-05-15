@@ -1,5 +1,9 @@
 # Changelog Q Applet Twitch
 
+## Version 1.0.3 - May 15, 2019
+
+Removed internet connection error
+
 ## Version 1.0.2 - April 29, 2019
 
 Handled internet connection error
