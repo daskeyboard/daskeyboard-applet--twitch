@@ -5,13 +5,14 @@ const logger = q.logger;
 /**
  * Retrieve data from the service
  */
-async function retrieveData(userLogins) {
+async function retrieveData(userLogins, clientID, oAuth) {
   let url = 'https://api.twitch.tv/helix/streams?';
   logger.info("Getting data via URL: " + url);
   return request.get({
     url: url,
     headers: {
       'Client-ID': 'fs7tnn3kkjowzye49l4xxex49oy539',
+      'Authorization': 'Bearer ' + oAuth
     },
     qs: {
       user_login: userLogins,
@@ -20,6 +21,18 @@ async function retrieveData(userLogins) {
   }).catch(error => {
     logger.error(`Error when trying to retrieveData: ${error}`);
     throw new Error(`Error when trying to retrieveData: ${error}`);
+  });
+}
+
+async function requestOAuthToken(clientID, secret) {
+  let url = 'https://id.twitch.tv/oauth2/token?client_id=' + clientID + "&client_secret=" + secret + "&grant_type=client_credentials";
+  return request.post({
+    url: url,
+    method: "POST",
+    json: true
+  }).catch(error => {
+    logger.error('Error when trying to requestOAuthToken: ' + error);
+    throw new Error('Error when trying to requestOAuthToken: ' + error); 
   });
 }
 
@@ -44,6 +57,14 @@ class TwitchStreams extends q.DesktopApp {
           throw new Error("User logins must not be empty.")
         }
       }
+    }
+    const clientID = this.config.clientID;
+    const secret = this.config.secret;
+    if(clientID === null || clientID === '') {
+       throw new Error("Client ID must not be empty.")
+    }
+    if(secret === null || secret === '') {
+       throw new Error('Twitch API Secret must not be empty.')
     }
   }
 
@@ -77,14 +98,33 @@ class TwitchStreams extends q.DesktopApp {
 
   async run() {
     logger.info("Twitch running.");
+    const clientID = this.config.clientID;
+    const secret = this.config.secret;
+    if(clientID === undefined || clientID === '') {
+	logger.warn("No ClientID configured!");
+    	return null;
+    }
+    if(secret === undefined || secret === '') {
+	logger.warn("No API Secret configured!");
+    	return null;
+    }
+    var oAuth = this.oAuth;
+
+    if(oAuth == null || oAuth.trim() == '' || this.tokenExpiresAt < Date.now()+10000){
+       logger.info("Acquiring new OAuth Token");
+       var data = await requestOAuthToken(clientID, secret);
+       this.oAuth = data["access_token"];
+       oAuth = this.oAuth;
+       this.tokenExpiresAt = Date.now() + (data["expires_in"]*1000);
+    }
+
     const userLogins = this.config.userLogins;
 
     if (userLogins) {
       logger.info("My user logins are: " + JSON.stringify(userLogins));
-
-      return retrieveData(userLogins)
+      return retrieveData(userLogins, clientID, oAuth)
         .then(body => {
-          return this.generateSignal(body);
+	  return this.generateSignal(body);
         }).catch(error => {
           logger.error(`Error while getting Twitch data: ${error}`);
           if(`${error.message}`.includes("getaddrinfo")){

@@ -45,6 +45,24 @@
     },
     "questions": [
       {
+        "key": "clientID",
+        "label": "You need a Twitch API Client ID",
+        "help": "Your Twitch Client ID (https://dev.twitch.tv/console/)",
+        "placeholder": "123456789abcdefghijklm",
+        "required": true,
+        "order": 1,
+        "controlType": "textbox"
+      },
+      {
+        "key": "secret",
+        "label": "You need a Twitch API Secret",
+        "help": "Your Twitch API Secret (https://dev.twitch.tv/console/)",
+        "placeholder": "123456789abcdefghijklm",
+        "required": true,
+        "order": 1,
+        "controlType": "textbox"
+      },
+      {
         "key": "userLogins",
         "label": "What user do you want to follow?",
         "help": "Enter a user login like 'twitchpresents'.",
