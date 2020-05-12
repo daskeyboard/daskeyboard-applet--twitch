@@ -11,7 +11,7 @@ async function retrieveData(userLogins, clientID, oAuth) {
   return request.get({
     url: url,
     headers: {
-      'Client-ID': 'fs7tnn3kkjowzye49l4xxex49oy539',
+      'Client-ID': clientID,
       'Authorization': 'Bearer ' + oAuth
     },
     qs: {
@@ -79,7 +79,7 @@ class TwitchStreams extends q.DesktopApp {
         return new q.Signal({
           points: [
             [
-              new q.Point('#0000FF',q.Effects.BLINK)
+              new q.Point('#b401ff',q.Effects.BLINK)
             ]
           ],
           name: `${stream.user_name} is live!`,

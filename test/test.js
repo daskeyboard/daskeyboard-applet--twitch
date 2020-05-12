@@ -1,9 +1,9 @@
 const assert = require('assert');
 const t = require('../index');
 
-const clientID = 'h653tq43o1qwda9i1q0wqmusdao4kci';
-const secret = '6k7hl0us8bcwycq43qrazyp6cc9io8';
-const oAuth = 'yy9q2rz5i49mwn0b7zabnhj7vzy2lz';
+const clientID = 'PLACEHOLDER';
+const secret = 'PLACEHOLDER';
+const oAuth = 'PLACEHOLDER';
 
 describe('retrieveData', function () {
   it('retrieves data', async function () {
@@ -106,8 +106,8 @@ function buildApp(config) {
   const app = new t.TwitchStreams();
   app.config = config || {
     userLogins: ['twitchpresents', 'patterrz'],
-    clientID: 'h653tq43o1qwda9i1q0wqmusdao4kci',
-    secret: '6k7hl0us8bcwycq43qrazyp6cc9io8',
+    clientID: clientID,
+    secret: secret,
     geometry: {
       width: 1,
       height: 1,
