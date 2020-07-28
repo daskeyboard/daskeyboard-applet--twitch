@@ -23,6 +23,8 @@ the Q Desktop application (<https://www.daskeyboard.com/q>)
 
 ## Running tests
 
+- Create new file called 'auth.json' in the test folder and use the template to add
+a proxy and an api key
 - `yarn test`
 
 ## Contributions

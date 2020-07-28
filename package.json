@@ -43,6 +43,9 @@
         }
       }
     },
+    "authorization": {
+      "type": "oauth2"
+    },
     "questions": [
       {
         "key": "userLogins",

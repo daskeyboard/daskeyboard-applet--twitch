@@ -1,27 +1,9 @@
 const request = require('request-promise');
 const q = require('daskeyboard-applet');
 const logger = q.logger;
+const TWITCH_API_STREAM_URL = 'https://api.twitch.tv/helix/streams';
+const TWITCH_CLIENT_ID = 'qjp08cskr8p15hx23w6qy5ovkpienb';
 
-/**
- * Retrieve data from the service
- */
-async function retrieveData(userLogins) {
-  let url = 'https://api.twitch.tv/helix/streams?';
-  logger.info("Getting data via URL: " + url);
-  return request.get({
-    url: url,
-    headers: {
-      'Client-ID': 'fs7tnn3kkjowzye49l4xxex49oy539',
-    },
-    qs: {
-      user_login: userLogins,
-    },
-    json: true
-  }).catch(error => {
-    logger.error(`Error when trying to retrieveData: ${error}`);
-    throw new Error(`Error when trying to retrieveData: ${error}`);
-  });
-}
 
 
 class TwitchStreams extends q.DesktopApp {
@@ -31,6 +13,46 @@ class TwitchStreams extends q.DesktopApp {
     this.notified = {};
     // run every 5 min
     this.pollingInterval = 5 * 60 * 1000;
+  }
+
+  /**
+   * Retrieve data from the service
+   */
+  async retrieveData(userLogins) {
+    logger.info(`Retrive data for user logins ${JSON.stringify(userLogins)}`);
+    const url = TWITCH_API_STREAM_URL + `?user_login${userLogins}`;
+    let options = {
+      uri: url,
+      json: true
+    };
+    return this.getTwitchAccessToken().then(accessToken => {
+      logger.info(`Got token ${accessToken}`);
+      // save the token
+      this.twitchAccessToken = accessToken;
+      // add toekn to request option
+      options = {
+        ...options, headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'client-id': TWITCH_CLIENT_ID
+        }
+      };
+      return request(options);
+    })
+      .catch(err => {
+        logger.info(`Got error ${err}, will trying to get access token`);
+        return this.refreshTwitchAccessToken().then(accessToken => {
+          // save the token
+          this.twitchAccessToken = accessToken;
+          // add toekn to request option
+          options = {
+            ...options, headers: {
+              'Authorization': `Bearer ${accessToken}`,
+              'client-id': TWITCH_CLIENT_ID
+            }
+          };
+          return request(options);
+        });
+      })
   }
 
   async applyConfig() {
@@ -58,7 +80,7 @@ class TwitchStreams extends q.DesktopApp {
         return new q.Signal({
           points: [
             [
-              new q.Point('#0000FF',q.Effects.BLINK)
+              new q.Point('#0000FF', q.Effects.BLINK)
             ]
           ],
           name: `${stream.user_name} is live!`,
@@ -82,17 +104,17 @@ class TwitchStreams extends q.DesktopApp {
     if (userLogins) {
       logger.info("My user logins are: " + JSON.stringify(userLogins));
 
-      return retrieveData(userLogins)
+      return this.retrieveData(userLogins)
         .then(body => {
           return this.generateSignal(body);
         }).catch(error => {
           logger.error(`Error while getting Twitch data: ${error}`);
-          if(`${error.message}`.includes("getaddrinfo")){
+          if (`${error.message}`.includes("getaddrinfo")) {
             // Do not send signal when getting internet connection error
             // return q.Signal.error(
             //   'The Twitch service returned an error. <b>Please check your internet connection</b>.'
             // );
-          }else{
+          } else {
             return q.Signal.error([`The Twitch service returned an error. Detail: ${error}`]);
           }
         });
@@ -101,12 +123,50 @@ class TwitchStreams extends q.DesktopApp {
       return null;
     }
   }
+
+  /**
+   * Use the daskeyboard Oauth Proxy to get an access token from Twitch for this user
+   */
+  async getTwitchAccessToken() {
+    // return if found in memory
+    if (this.twitchAccessToken) {
+      return this.twitchAccessToken;
+    }
+
+    if (!this.authorization.apiKey) {
+      throw new Error('No apiKey available');
+    }
+
+    const proxyRequest = new q.Oauth2ProxyRequest({
+      apiKey: this.authorization.apiKey
+    });
+
+    return proxyRequest.getOauth2ProxyToken().then(proxyResponse => {
+      return proxyResponse.access_token;
+    });
+  }
+
+  /**
+   * Use the daskeyboard Oauth proxy to refresh twitch access token
+   */
+  async refreshTwitchAccessToken() {
+    if (!this.authorization.apiKey) {
+      throw new Error('No apiKey available');
+    }
+
+    const proxyRequest = new q.Oauth2ProxyRequest({
+      apiKey: this.authorization.apiKey
+    });
+
+    return proxyRequest.refreshOauth2AccessToken().then(proxyResponse => {
+      return proxyResponse.access_token;
+    });
+  }
 }
 
 
 module.exports = {
-  TwitchStreams: TwitchStreams,
-  retrieveData: retrieveData,
+  TwitchStreams: TwitchStreams
 }
 
 const applet = new TwitchStreams();
