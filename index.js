@@ -20,10 +20,12 @@ class TwitchStreams extends q.DesktopApp {
    */
   async retrieveData(userLogins) {
     logger.info(`Retrive data for user logins ${JSON.stringify(userLogins)}`);
-    const url = TWITCH_API_STREAM_URL + `?user_login${userLogins}`;
     let options = {
-      uri: url,
-      json: true
+      uri: TWITCH_API_STREAM_URL,
+      json: true,
+      qs: {
+        user_login: userLogins
+      }
     };
     return this.getTwitchAccessToken().then(accessToken => {
       logger.info(`Got token ${accessToken}`);

@@ -1,5 +1,11 @@
 # Changelog Q Applet Twitch
 
+## Version 2.0.0 July 29, 2020
+
+### Bug Fixes
+
+* **Authentication:**  Upgraded the applet to work with new Oauth2 requirments of twitch
+
 ## Version 1.0.3 - May 15, 2019
 
 Removed internet connection error
