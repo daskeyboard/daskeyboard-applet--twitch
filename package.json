@@ -30,7 +30,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "daskeyboard-applet": "^2.11.1"
+    "daskeyboard-applet": "^2.11.4"
   },
   "qConfig": {
     "geometry": {
